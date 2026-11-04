@@ -1,23 +1,12 @@
 #include <iostream> 
-
-#include <random> 
-
 #include <iomanip> 
-
 #include <cstdlib> 
-
- 
-
 using namespace std; 
 
- 
 
 int score = 0; 
-
- 
-
+int multiplier = 1;
 // Move numbers together and merge matching numbers 
-
 void merge_line(int line[5]) 
 
 { 
@@ -68,7 +57,7 @@ void merge_line(int line[5])
 
             // Add merged number to score 
 
-            score = score + line[position]; 
+            score = score + line[position] * multiplier;
 
  
 
@@ -415,8 +404,8 @@ void insert_random(int board[][5], int numrows = 5)
                     { 
 
                         // Randomly insert 2 or 4 
-
-                        if (rand() % 10 == 0) 
+                        
+                         if (rand() % 10 == 0) 
 
                         { 
 

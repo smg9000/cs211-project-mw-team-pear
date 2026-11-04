@@ -1,5 +1,5 @@
 #include <iostream> 
-
+#include <random>
 #include "2048_helper.h" 
 
 #include <SFML/Graphics.hpp> 
@@ -110,6 +110,8 @@ int main()
 
     bool gameOver = false; 
 
+	bool freeplay = false; 
+
  
 
     // Main game loop 
@@ -170,6 +172,8 @@ int main()
 
                     gameOver = false; 
 
+					freeplay = false;
+
  
 
                     insert_random(board, size); 
@@ -177,12 +181,17 @@ int main()
                     insert_random(board, size); 
 
                 } 
+				if (event.key.code == sf::Keyboard::F){
+					if(won == true){
+						freeplay = true;
+					}
+				}
 
  
 
                 // Allow movement while the game is active 
 
-                else if (won == false && gameOver == false) 
+                else if ((won == false || freeplay == true) && gameOver == false)
 
                 { 
 
@@ -210,7 +219,7 @@ int main()
 
                     // Move up 
 
-                    if (event.key.code == sf::Keyboard::Up) 
+                    if ((event.key.code == sf::Keyboard::Up || event.key.code == sf::Keyboard::Num2)) 
 
                     { 
 
@@ -224,7 +233,7 @@ int main()
 
                     // Move down 
 
-                    else if (event.key.code == sf::Keyboard::Down) 
+                    else if ((event.key.code == sf::Keyboard::Down || event.key.code == sf::Keyboard::Num4))
 
                     { 
 
@@ -238,7 +247,7 @@ int main()
 
                     // Move right 
 
-                    else if (event.key.code == sf::Keyboard::Right) 
+                    else if ((event.key.code == sf::Keyboard::Right || event.key.code == sf::Keyboard::Num3))
 
                     { 
 
@@ -252,7 +261,7 @@ int main()
 
                     // Move left 
 
-                    else if (event.key.code == sf::Keyboard::Left) 
+                    else if ((event.key.code == sf::Keyboard::Left || event.key.code == sf::Keyboard::Num1))
 
                     { 
 
@@ -278,7 +287,7 @@ int main()
 
                         if (board_changed(board, old_board, size) 
 
-                            && won == false) 
+                            && (won == false || freeplay == true))
 
                         { 
 
