@@ -1,2 +1,2 @@
 # cs211-project-mw-team-pear
-3 developers all working on a game does this sound familiar
+Unfinished and scrapped code, 2048 game with graphical user interface located in main branch.
