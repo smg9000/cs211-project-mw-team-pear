@@ -26,7 +26,7 @@ int main()
 		cin >> choice;
 
 		if (choice == 'u')
-			move_up(board, 3);
+			move_up(board, size);
 		else if (choice == 'd')
 			move_down(board, size);
 		else if (choice == 'l')
