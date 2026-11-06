@@ -4,7 +4,8 @@ using namespace std;
 
 int main()
 {
-	int size = 5;
+	int num_rows = 5;
+	int num_cols = 5;
 	int board[5][5] = {
 		{0, 4, 2, 4, 0},
 		{0, 0, 0, 0, 0},
@@ -26,13 +27,13 @@ int main()
 		cin >> choice;
 
 		if (choice == 'u')
-			move_up(board, size);
+			move_up(board, num_rows, num_cols);
 		else if (choice == 'd')
-			move_down(board, size);
+			move_down(board, num_rows, num_cols);
 		else if (choice == 'l')
-			move_left(board, size);
+			move_left(board, num_rows, num_cols);
 		else if (choice == 'r')
-			move_right(board, size);
+			move_right(board, num_rows, num_cols);
 
 		//insert_random(board, size);
 		print_board(board);

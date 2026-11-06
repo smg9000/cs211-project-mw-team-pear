@@ -5,46 +5,40 @@ using namespace std;
 
 int counter = 0;
 
-void move_left(int board[][5], int numrows = 5)
+void move_left(int board[][5], int numrows, int numcols)
 {
 	for (int r = 0; r < numrows; r++) {
-		for (int c = 0; c < 5; c++) {
-            if (c != (0 && 4)) { 
-                if (board[r][c] != 0) {
-                    for (int i = 0; i < c; i++) {
-                        if (board[r][i] == 0) {
-                            board[r][i] = board[r][c];
-                            board[r][c] = 0;
-                        }                    
-                    }
+		for (int c = 0; c < numcols; c++) {
+            for (int i = 0; i < c; i++) {
+                if (board[r][i] == 0) {
+                    board[r][i] = board[r][c];
+                    board[r][c] = 0;
+					break;
                 }
             }
 		}
 	}
 }
 
-void move_right(int board[][5], int numrows = 5)
+void move_right(int board[][5], int numrows, int numcols)
 {
-    for (int r = 0; r < numrows; r++) {
-		for (int c = 0; c < 5; c++) {
-            if (c != (0 && 4)) { 
-                if (board[r][c] != 0) {
-                    for (int i = c + 1; i <= 4; i++) {
-                        if (board[r][i] == 0) {
-                            board[r][i] = board[r][c];
-                            board[r][c] = 0;
-                        }                    
-                    }
+    for (int r = numrows - 1; r >= 0; r--) {
+		for (int c = numcols - 1; c >= 0; c--) {
+            for (int i = numcols - 1; i > c; i--) {
+                if (board[r][i] == 0) {
+                    board[r][i] = board[r][c];
+                    board[r][c] = 0;  
+					break;              
                 }
             }
 		}
 	}
 }
 
-void move_up(int board[][5], int numrows = 5)
+void move_up(int board[][5],int numrows, int numcols)
 {
-    for (int c = 0; c < numrows; c++) {
-		for (int r = 0; r < 5; r++) {
+    for (int c = 0; c < numcols; c++) {
+		for (int r = 0; r < numrows; r++) {
             for (int i = 0; i < r; i++) {
                 if (board[i][c] == 0) {
                     board[i][c] = board[r][c];
@@ -56,11 +50,11 @@ void move_up(int board[][5], int numrows = 5)
 	}
 }
 
-void move_down(int board[][5], int numrows = 5)
+void move_down(int board[][5], int numrows, int numcols)
 {
-    for (int c = 4; c >= 0; c--) {
-		for (int r = 4; r >= 0; r--) {
-            for (int i = 4; i > r; i--) {
+    for (int c = numcols - 1; c >= 0; c--) {
+		for (int r = numrows - 1; r >= 0; r--) {
+            for (int i = numrows - 1; i > r; i--) {
                 if (board[i][c] == 0) {
                     board[i][c] = board[r][c];
                     board[r][c] = 0;
