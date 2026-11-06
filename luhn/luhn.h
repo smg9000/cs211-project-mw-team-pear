@@ -1,13 +1,6 @@
-#include <iostream>
-using namespace std;
+#ifndef LUHN
+#define LUHN
 
-int ask_for_number(number) {
-    cout << "Please enter a 16-digit number: ";
-    cin >> number;
+void read_and_check_number(int number);
 
-    return number;
-}
-
-void read_and_check_number(int number = 0) {
-
-}
+#endif
