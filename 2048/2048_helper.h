@@ -45,14 +45,12 @@ void move_up(int board[][5], int numrows = 5)
 {
     for (int r = 0; r < numrows; r++) {
 		for (int c = 0; c < 5; c++) {
-            if (r != (0 && 4)) { 
                 for (int i = 0; i < r; i++) {
                     if (board[i][c] == 0) {
                         board[i][c] = board[r][c];
                         board[r][c] = 0;
                         break;                 
                     }
-                }
             }
 		}
 	}
