@@ -30,8 +30,10 @@ int main()
 			move_up(board, num_rows, num_cols);
 		else if (choice == 'd')
 			move_down(board, num_rows, num_cols);
-		else if (choice == 'l')
+		else if (choice == 'l') {
 			move_left(board, num_rows, num_cols);
+			add_left(board, num_rows, num_cols);
+		}
 		else if (choice == 'r')
 			move_right(board, num_rows, num_cols);
 
