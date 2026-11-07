@@ -22,16 +22,17 @@ void move_left(int board[][5], int numrows, int numcols)
 
 void add_left(int board[][5], int numrows, int numcols)
 {
-	for (int r = numrows - 1; r >= 0; r--) {
-		for (int c = numcols - 1; c >= 0; c--) {
-            for (int i = numcols - 1; i > c; i--) {
-                if (board[r][i] != 0 && board[r][i] == board[r][i - 1]) {
-                    board[r][i - 1] += board[r][i];
-                    board[r][i] = 0;
+	for (int r = 0; r < numrows; r++) {
+		for (int c = 0; c < numcols; c++) {
+            for (int i = 0; i < c; i++) {
+                if (board[r][i] != 0 && board[r][i] == board[r][i + 1]) {
+                    board[r][i] += board[r][i + 1];
+                    board[r][i + 1] = 0;
 					break;
                 }
             }
 		}
+		move_left(board, numrows, numcols);
 	}
 }
 
