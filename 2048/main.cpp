@@ -4,15 +4,44 @@
 
 #include <SFML/Graphics.hpp> 
 
-#include <fstream> 
-
-#include <vector> 
-
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
  
 
 using namespace std; 
 
- 
+std::vector<std::string> getWordsFromLine(const std::string& filename, int targetLineNum) {
+    std::ifstream file(filename);
+    std::vector<std::string> words;
+    std::string currentLine;
+    int currentLineNum = 0;
+
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open file " << filename << std::endl;
+        return words;
+    }
+
+    // 1. Loop until we reach the target line
+    while (std::getline(file, currentLine)) {
+        currentLineNum++;
+        
+        if (currentLineNum == targetLineNum) {
+            // 2. We found the line! Turn it into a stream to split by whitespace
+            std::stringstream lineStream(currentLine);
+            std::string word;
+            
+            // 3. Extract word-by-word from this specific line
+            while (lineStream >> word) {
+                words.push_back(word);
+            }
+            break; // Stop reading the rest of the file
+        }
+    }
+
+    return words; 
+}
 
 int main() 
 
@@ -139,17 +168,47 @@ int main()
             // Check keyboard input 
 
             if (event.type == sf::Event::KeyPressed) 
-
             { 
+                if (event.key.code == sf::Keyboard::Escape)
+                    window.close();
+				if (event.key.code == sf::Keyboard::S)
+				{
+                    std::ofstream myFile("2048/save.txt");
 
-                if (event.key.code == sf::Keyboard::Escape) 
+                    if (!myFile.is_open()) {
+                        std::cerr << "Error opening the file!" << std::endl;
+                        return 1;
+                    }
+                    myFile << score << "\n";
+                    for (int i = 0; i < 5; i++)
+                    {
+                        for (int j = 0; j < 5; j++)
+                            myFile << board[i][j] << " ";
+                        myFile << "\n";
+                    }
+                    myFile.close();
+				} 
+				if (event.key.code == sf::Keyboard::O)
+				{
+					
+					std::vector<std::string> extractedWords = getWordsFromLine("2048/save.txt", 1);
 
-                    window.close(); 
-
- 
-
-                // Restart the game 
-
+					if (extractedWords.empty()) {
+						std::cout << "error";
+					} else {
+						score = std::stoi(extractedWords[0]);
+					}
+					for(int i = 0; i<5; i++){
+						for (int j = 0; j<5; j++){
+							if (getWordsFromLine("2048/save.txt", (i+2)).empty()) {
+								std::cout << "error";
+							} else {
+								board[i][j] = std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]);
+							}
+							
+						}
+					}
+				} 
                 if (event.key.code == sf::Keyboard::R) 
 
                 { 
