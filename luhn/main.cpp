@@ -6,7 +6,7 @@ int main()
 {
 	int number = 0;
 
-	read_and_check_number(number);
+	read_and_check(number);
 
 	return 0;
 }

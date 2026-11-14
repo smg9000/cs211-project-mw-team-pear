@@ -1,6 +1,3 @@
-#ifndef LUHN
-#define LUHN
+#pragma once
 
-void read_and_check_number(int number);
-
-#endif
+int read_and_check(int number);
