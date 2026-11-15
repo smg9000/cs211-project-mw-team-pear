@@ -99,7 +99,7 @@ int main()
     window.setFramerateLimit(60); 
     // Load the font 
     sf::Font font; 
-    if (!font.loadFromFile("./arial.ttf")) 
+    if (!font.loadFromFile("arial.ttf")) 
     { 
 
         cerr << "Could not load arial.ttf. " 
@@ -208,11 +208,15 @@ int main()
                                 for(int p=1; p<=30; p++){
                                     if ((std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]) == std::pow(2, p)) || (std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]) == 0 )) {
                                         board[i][j] = std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]);
+                                        
                                         error = false;
                                     }
                                 }
+                                std::cout << board[i][j] << " ";
                                 if(error == true){
-                                    std::cout << "error Invalid Save Detected ";
+                                    std::cout << "error Invalid Save Detected replacing invalid spot with 0 ";
+                                    board[i][j] = 0;
+                                    error = false;
                                 }
 							}
 							
