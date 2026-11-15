@@ -98,7 +98,7 @@ int main()
     window.setFramerateLimit(60); 
     // Load the font 
     sf::Font font; 
-    if (!font.loadFromFile("2048/arial.ttf")) 
+    if (!font.loadFromFile("./arial.ttf")) 
     { 
 
         cerr << "Could not load arial.ttf. " 
