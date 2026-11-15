@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <cmath>
  
 
 using namespace std; 
@@ -203,7 +204,16 @@ int main()
 							if (getWordsFromLine("2048/save.txt", (i+2)).empty()) {
 								std::cout << "error";
 							} else {
-								board[i][j] = std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]);
+                                bool error = true;
+                                for(int p=1; p<=30; p++){
+                                    if ((std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]) == std::pow(2, p)) || (std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]) == 0 )) {
+                                        board[i][j] = std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]);
+                                        error = false;
+                                    }
+                                }
+                                if(error == true){
+                                    std::cout << "error Invalid Save Detected ";
+                                }
 							}
 							
 						}
