@@ -1,0 +1,15 @@
+CS211 Group Project - Team Pear
+Course: CS211 - Programming
+Session: MW
+Group: Team Pear
+
+Team Members:
+
+1. Cameron
+   Student ID: g227b276
+
+2. Reagan
+   Student ID: k748c493
+
+3. Zach
+   Student ID: k894m447
