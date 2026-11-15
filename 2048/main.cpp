@@ -174,7 +174,7 @@ int main()
                     window.close();
 				if (event.key.code == sf::Keyboard::S)
 				{
-                    std::ofstream myFile("2048/save.txt");
+                    std::ofstream myFile("save.txt");
 
                     if (!myFile.is_open()) {
                         std::cerr << "Error opening the file!" << std::endl;
@@ -192,7 +192,7 @@ int main()
 				if (event.key.code == sf::Keyboard::O)
 				{
 					
-					std::vector<std::string> extractedWords = getWordsFromLine("2048/save.txt", 1);
+					std::vector<std::string> extractedWords = getWordsFromLine("save.txt", 1);
 
 					if (extractedWords.empty()) {
 						std::cout << "error";
@@ -201,13 +201,13 @@ int main()
 					}
 					for(int i = 0; i<5; i++){
 						for (int j = 0; j<5; j++){
-							if (getWordsFromLine("2048/save.txt", (i+2)).empty()) {
+							if (getWordsFromLine("save.txt", (i+2)).empty()) {
 								std::cout << "error";
 							} else {
                                 bool error = true;
                                 for(int p=1; p<=30; p++){
-                                    if ((std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]) == std::pow(2, p)) || (std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]) == 0 )) {
-                                        board[i][j] = std::stoi(getWordsFromLine("2048/save.txt", (i+2))[j]);
+                                    if ((std::stoi(getWordsFromLine("save.txt", (i+2))[j]) == std::pow(2, p)) || (std::stoi(getWordsFromLine("save.txt", (i+2))[j]) == 0 )) {
+                                        board[i][j] = std::stoi(getWordsFromLine("save.txt", (i+2))[j]);
                                         
                                         error = false;
                                     }
